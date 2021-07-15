@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="AgentHub Client v0.0.30">
+
+    <title>API Reference — AgentHub Client v0.0.30</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+
+    <script src="dist/sidebar_items-9a3ac37ff3.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+
+  </head>
+  <body data-type="extras">
+    <script>
+
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="https://olos-live.github.io" class="sidebar-projectName">
+AgentHub Client
+      </a>
+      <strong class="sidebar-projectVersion">
+        v0.0.30
+      </strong>
+    </div>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+  API Reference <small class="app-vsn">AgentHub Client v0.0.30</small>
+</h1>
+
+  <section class="details-list">
+    <h2 id="modules" class="section-heading">
+  <a href="#modules" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Modules
+</h2>
+
+    <div class="summary">
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AgentHubClient.html">AgentHubClient</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>This is the main client module. It provides the top-level functions to interact with the AgentHub
+application, like inserting, deleting, updating and querying agent state and sending messages.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AgentHubClient.AgentState.html">AgentHubClient.AgentState</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Defines the agent state record to be used when dealing with Mnesia
+and the agent state strucuture to be used in all the rest of the
+application.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AgentHubClient.Cluster.html">AgentHubClient.Cluster</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Provides supporting functions for dealing with node names,
+like identifying the application in which the client is
+running based on the node name.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AgentHubClient.Mnesia.Delete.html">AgentHubClient.Mnesia.Delete</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Provides functions for deleting data from mnesia.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AgentHubClient.Mnesia.Init.html">AgentHubClient.Mnesia.Init</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>This module is responsible for initializing mnesia,
+subscribing to events and depending on the scenario
+(standalone or cluster) using the Mnesia.Setup module
+to create tables or to copy them and joining the cluster.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AgentHubClient.Mnesia.Insert.html">AgentHubClient.Mnesia.Insert</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Provides functions for inserting data into the agent's state table in mnesia.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AgentHubClient.Mnesia.Monitor.html">AgentHubClient.Mnesia.Monitor</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>This module listens for events from mnesia like up and down
+and invoke the corresponding handlers in the Mnesia.Setup module.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AgentHubClient.Mnesia.Queries.html">AgentHubClient.Mnesia.Queries</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Provides functions for querying the agents table in mnesia.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AgentHubClient.Mnesia.Setup.html">AgentHubClient.Mnesia.Setup</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Provides functions for setting up mnesia in two different scenarios</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AgentHubClient.Mnesia.Updates.html">AgentHubClient.Mnesia.Updates</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Provides functions that update agent's state record in the mnesia table.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AgentHubClient.Mnesia.Utils.html">AgentHubClient.Mnesia.Utils</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Provides common functions used by the other mnesia-modules.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AgentHubClient.Store.html">AgentHubClient.Store</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Provides an interface for interacting with the data store.
+In this version the data store is mnesia so we delegate all
+the functions to mnesia-specific modules.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AgentHubClient.Supervisor.html">AgentHubClient.Supervisor</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Supervises mnesia and libcluster processes. The libcluster process
+is only used if the node is started with a name. Add it to your
+supervision tree (usually in <code class="inline">application.ex</code>). Example</p></div>
+
+</div>
+
+    </div>
+  </section>
+
+
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="readme.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+AgentHub Client
+        </span>
+      </a>
+
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
