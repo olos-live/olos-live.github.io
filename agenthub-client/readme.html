@@ -54,7 +54,7 @@
 
   <div class="sidebar-header">
     <div class="sidebar-projectDetails">
-      <a href="https://olos-live.github.io" class="sidebar-projectName">
+      <a href="https://olos-live.github.io/agenthub-client" class="sidebar-projectName">
 AgentHub Client
       </a>
       <strong class="sidebar-projectVersion">
@@ -88,17 +88,17 @@ well defined for now.</p><h2 id="how-to-use-it" class="section-heading">
   How to use it
 </h2>
 <ol><li>Add it as a dependency in yout <code class="inline">mix.exs</code> file. You must have ssh access
-to the repository in the Olos' GitLab. Example:</li></ol><pre><code class="makeup elixir"><span class="w">  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="6579419743-1">do</span><span class="w">
-    </span><span class="p" data-group-id="6579419743-2">[</span><span class="w">
-      </span><span class="p" data-group-id="6579419743-3">{</span><span class="ss">:agenthub_client</span><span class="p">,</span><span class="w"> </span><span class="ss">git</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;git@olosprdspogit03:olos-live/agenthub-client.git&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;latest&quot;</span><span class="p" data-group-id="6579419743-3">}</span><span class="w">
-    </span><span class="p" data-group-id="6579419743-2">]</span><span class="w">
-  </span><span class="k" data-group-id="6579419743-1">end</span></code></pre><ol start="2"><li>Add it to your supervision tree (usually in <code class="inline">application.ex</code>). Example:</li></ol><pre><code class="makeup elixir"><span class="w">  </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7607227083-1">[</span><span class="w">
-    </span><span class="p" data-group-id="7607227083-2">{</span><span class="nc">AgentHubClient.Supervisor</span><span class="p">,</span><span class="w"> </span><span class="ss">replication</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="7607227083-2">}</span><span class="w">
-  </span><span class="p" data-group-id="7607227083-1">]</span><span class="w">
-  </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="7607227083-3">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="7607227083-3">)</span></code></pre><ol start="3"><li>Then you can invoke functions provided by the <a href="AgentHubClient.html"><code class="inline">AgentHubClient</code></a> module. Example:</li></ol><pre><code class="makeup elixir"><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="nf">some_dialer_function</span><span class="w"> </span><span class="k" data-group-id="4395220350-1">do</span><span class="w">
-    </span><span class="n">agents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">AgentHubClient</span><span class="o">.</span><span class="n">get_all_agents</span><span class="p" data-group-id="4395220350-2">(</span><span class="s">&quot;atento&quot;</span><span class="p" data-group-id="4395220350-2">)</span><span class="w">
+to the repository in the Olos' GitLab. Example:</li></ol><pre><code class="makeup elixir"><span class="w">  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="6628055876-1">do</span><span class="w">
+    </span><span class="p" data-group-id="6628055876-2">[</span><span class="w">
+      </span><span class="p" data-group-id="6628055876-3">{</span><span class="ss">:agenthub_client</span><span class="p">,</span><span class="w"> </span><span class="ss">git</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;git@olosprdspogit03:olos-live/agenthub-client.git&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;latest&quot;</span><span class="p" data-group-id="6628055876-3">}</span><span class="w">
+    </span><span class="p" data-group-id="6628055876-2">]</span><span class="w">
+  </span><span class="k" data-group-id="6628055876-1">end</span></code></pre><ol start="2"><li>Add it to your supervision tree (usually in <code class="inline">application.ex</code>). Example:</li></ol><pre><code class="makeup elixir"><span class="w">  </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5945224881-1">[</span><span class="w">
+    </span><span class="p" data-group-id="5945224881-2">{</span><span class="nc">AgentHubClient.Supervisor</span><span class="p">,</span><span class="w"> </span><span class="ss">replication</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="5945224881-2">}</span><span class="w">
+  </span><span class="p" data-group-id="5945224881-1">]</span><span class="w">
+  </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="5945224881-3">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="5945224881-3">)</span></code></pre><ol start="3"><li>Then you can invoke functions provided by the <a href="AgentHubClient.html"><code class="inline">AgentHubClient</code></a> module. Example:</li></ol><pre><code class="makeup elixir"><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="nf">some_dialer_function</span><span class="w"> </span><span class="k" data-group-id="5039592471-1">do</span><span class="w">
+    </span><span class="n">agents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">AgentHubClient</span><span class="o">.</span><span class="n">get_all_agents</span><span class="p" data-group-id="5039592471-2">(</span><span class="s">&quot;atento&quot;</span><span class="p" data-group-id="5039592471-2">)</span><span class="w">
     </span><span class="c1"># do something with the agents</span><span class="w">
-  </span><span class="k" data-group-id="4395220350-1">end</span></code></pre><h2 id="configuration" class="section-heading">
+  </span><span class="k" data-group-id="5039592471-1">end</span></code></pre><h2 id="configuration" class="section-heading">
   <a href="#configuration" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Configuration
 </h2>
