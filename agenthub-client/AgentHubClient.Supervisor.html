@@ -93,10 +93,10 @@ AgentHubClient.Supervisor <small class="app-vsn">(AgentHub Client v0.0.30)</smal
         <section id="moduledoc">
 <p>Supervises mnesia and libcluster processes. The libcluster process
 is only used if the node is started with a name. Add it to your
-supervision tree (usually in <code class="inline">application.ex</code>). Example:</p><pre><code class="makeup elixir"><span class="w">  </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7612016275-1">[</span><span class="w">
-    </span><span class="p" data-group-id="7612016275-2">{</span><span class="nc">AgentHubClient.Supervisor</span><span class="p">,</span><span class="w"> </span><span class="ss">replication</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="7612016275-2">}</span><span class="w">
-  </span><span class="p" data-group-id="7612016275-1">]</span><span class="w">
-  </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="7612016275-3">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="7612016275-3">)</span></code></pre><p>The only available option is <code class="inline">replication</code>. When enabled, a copy
+supervision tree (usually in <code class="inline">application.ex</code>). Example:</p><pre><code class="makeup elixir"><span class="w">  </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="3460970799-1">[</span><span class="w">
+    </span><span class="p" data-group-id="3460970799-2">{</span><span class="nc">AgentHubClient.Supervisor</span><span class="p">,</span><span class="w"> </span><span class="ss">replication</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="3460970799-2">}</span><span class="w">
+  </span><span class="p" data-group-id="3460970799-1">]</span><span class="w">
+  </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="3460970799-3">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="3460970799-3">)</span></code></pre><p>The only available option is <code class="inline">replication</code>. When enabled, a copy
 of the mnesia table that holds agents state is kept locally in
 this node, so reading data is a local operation. If disabled,
 all access to the data is remote as the data is in the AgentHub
