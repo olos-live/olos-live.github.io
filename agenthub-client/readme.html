@@ -10,7 +10,7 @@
     <title>AgentHub Client — AgentHub Client v0.0.30</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-52ddcb55cd.js"></script>
+    <script src="dist/sidebar_items-e8deee97ca.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -87,17 +87,17 @@ sending text messages to an agent and so on.</p><h2 id="using-it" class="section
   Using it
 </h2>
 <ol><li>Add it as a dependency in yout <code class="inline">mix.exs</code> file. You must have ssh access
-to the repository in the Olos' GitLab.</li></ol><pre><code class="makeup elixir"><span class="w">  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="3398440850-1">do</span><span class="w">
-    </span><span class="p" data-group-id="3398440850-2">[</span><span class="w">
-      </span><span class="p" data-group-id="3398440850-3">{</span><span class="ss">:agenthub_client</span><span class="p">,</span><span class="w"> </span><span class="ss">git</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;git@olosprdspogit03:olos-live/agenthub-client.git&quot;</span><span class="p" data-group-id="3398440850-3">}</span><span class="w">
-    </span><span class="p" data-group-id="3398440850-2">]</span><span class="w">
-  </span><span class="k" data-group-id="3398440850-1">end</span></code></pre><ol start="2"><li>Add it to your supervision tree (usually in <code class="inline">application.ex</code>).</li></ol><pre><code class="makeup elixir"><span class="w">  </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="1595840227-1">[</span><span class="w">
-    </span><span class="p" data-group-id="1595840227-2">{</span><span class="nc">AgentHubClient.Supervisor</span><span class="p">,</span><span class="w"> </span><span class="ss">replication</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="1595840227-2">}</span><span class="w">
-  </span><span class="p" data-group-id="1595840227-1">]</span><span class="w">
-  </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="1595840227-3">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="1595840227-3">)</span></code></pre><ol start="3"><li>Then you can invoke functions provided by the <a href="AgentHubClient.html"><code class="inline">AgentHubClient</code></a> module. Example:</li></ol><pre><code class="makeup elixir"><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="nf">some_dialer_function</span><span class="w"> </span><span class="k" data-group-id="4588349606-1">do</span><span class="w">
-    </span><span class="n">agents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">AgentHubClient</span><span class="o">.</span><span class="n">get_talking</span><span class="p" data-group-id="4588349606-2">(</span><span class="s">&quot;campaign11&quot;</span><span class="p" data-group-id="4588349606-2">)</span><span class="w">
+to the repository in the Olos' GitLab.</li></ol><pre><code class="makeup elixir"><span class="w">  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="9287297310-1">do</span><span class="w">
+    </span><span class="p" data-group-id="9287297310-2">[</span><span class="w">
+      </span><span class="p" data-group-id="9287297310-3">{</span><span class="ss">:agenthub_client</span><span class="p">,</span><span class="w"> </span><span class="ss">git</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;git@olosprdspogit03:olos-live/agenthub-client.git&quot;</span><span class="p" data-group-id="9287297310-3">}</span><span class="w">
+    </span><span class="p" data-group-id="9287297310-2">]</span><span class="w">
+  </span><span class="k" data-group-id="9287297310-1">end</span></code></pre><ol start="2"><li>Add it to your supervision tree (usually in <code class="inline">application.ex</code>).</li></ol><pre><code class="makeup elixir"><span class="w">  </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7685156239-1">[</span><span class="w">
+    </span><span class="p" data-group-id="7685156239-2">{</span><span class="nc">AgentHubClient.Supervisor</span><span class="p">,</span><span class="w"> </span><span class="ss">replication</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="7685156239-2">}</span><span class="w">
+  </span><span class="p" data-group-id="7685156239-1">]</span><span class="w">
+  </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="7685156239-3">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="7685156239-3">)</span></code></pre><ol start="3"><li>Then you can invoke functions provided by the <a href="AgentHubClient.html"><code class="inline">AgentHubClient</code></a> module. Example:</li></ol><pre><code class="makeup elixir"><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="nf">some_dialer_function</span><span class="w"> </span><span class="k" data-group-id="5556521290-1">do</span><span class="w">
+    </span><span class="n">agents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">AgentHubClient</span><span class="o">.</span><span class="n">get_talking</span><span class="p" data-group-id="5556521290-2">(</span><span class="s">&quot;campaign11&quot;</span><span class="p" data-group-id="5556521290-2">)</span><span class="w">
     </span><span class="c1"># do something with the agents</span><span class="w">
-  </span><span class="k" data-group-id="4588349606-1">end</span></code></pre><h2 id="configuring-it" class="section-heading">
+  </span><span class="k" data-group-id="5556521290-1">end</span></code></pre><h2 id="configuring-it" class="section-heading">
   <a href="#configuring-it" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Configuring it
 </h2>
@@ -119,11 +119,11 @@ agents, with some warnings about not being able to connect to those nodes. You c
 </h2>
 <p>If instead of the latest version of this module you want your application to use an specific version,
 simply add a <code class="inline">tag</code> attribute with the required version next to the git repository in your <code class="inline">mix.exs</code> file.
-Example:</p><pre><code class="makeup elixir"><span class="w">  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="1462007528-1">do</span><span class="w">
-    </span><span class="p" data-group-id="1462007528-2">[</span><span class="w">
-      </span><span class="p" data-group-id="1462007528-3">{</span><span class="ss">:agenthub_client</span><span class="p">,</span><span class="w"> </span><span class="ss">git</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;git@olosprdspogit03:olos-live/agenthub-client.git&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v1.3.0&quot;</span><span class="p" data-group-id="1462007528-3">}</span><span class="w">
-    </span><span class="p" data-group-id="1462007528-2">]</span><span class="w">
-  </span><span class="k" data-group-id="1462007528-1">end</span></code></pre><h2 id="using-it-in-production" class="section-heading">
+Example:</p><pre><code class="makeup elixir"><span class="w">  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="5600434031-1">do</span><span class="w">
+    </span><span class="p" data-group-id="5600434031-2">[</span><span class="w">
+      </span><span class="p" data-group-id="5600434031-3">{</span><span class="ss">:agenthub_client</span><span class="p">,</span><span class="w"> </span><span class="ss">git</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;git@olosprdspogit03:olos-live/agenthub-client.git&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v1.3.0&quot;</span><span class="p" data-group-id="5600434031-3">}</span><span class="w">
+    </span><span class="p" data-group-id="5600434031-2">]</span><span class="w">
+  </span><span class="k" data-group-id="5600434031-1">end</span></code></pre><h2 id="using-it-in-production" class="section-heading">
   <a href="#using-it-in-production" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Using it in production
 </h2>
@@ -134,9 +134,11 @@ variable, it is assumed <code class="inline">agenthub</code>.</p><h2 id="contrib
   <a href="#contributing" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Contributing
 </h2>
-<p>If you are working on this project, before publishing this library, please remember to:</p><ul><li><p>Run <a href="https://hexdocs.pm/mix/Mix.Tasks.Test.html"><code class="inline">mix test</code></a> to make sure tests are still passing</p></li><li><p>Increment the version in <code class="inline">mix.exs</code></p></li><li><p>Commit and push to the repo</p></li><li><p>Update the documentation:</p><ul><li>Checkout the Olos Live documentation project:
-<code class="inline">git clone git@github.com:olos-live/olos-live.github.io.git</code></li><li>Set the environment variable <code class="inline">OLOS_LIVE_DOCS_PATH</code> with the path to that project:
-<code class="inline">export OLOS_LIVE_DOCS_PATH=/home/yourname/projects/olos-live/olos-live.github.io/</code></li><li>Run <a href="https://hexdocs.pm/ex_doc/0.24.2/Mix.Tasks.Docs.html"><code class="inline">mix docs</code></a></li><li>Commit and push the changes in the <code class="inline">olos-live.github.io</code> project</li><li>Access <a href="https://olos-live.github.io/agenthub-client/">https://olos-live.github.io/agenthub-client/</a> to verify it.</li></ul></li></ul>
+<p>If you are working on this project, before publishing this library, please remember to:</p><ul><li><p>Run <a href="https://hexdocs.pm/mix/Mix.Tasks.Test.html"><code class="inline">mix test</code></a> to make sure tests are still passing</p></li><li><p>Increment the version in <code class="inline">mix.exs</code></p></li><li><p>Commit and push to the repo</p></li><li><p>Update the documentation:</p><ul><li>Checkout the Olos Live documentation project (only once):
+<code class="inline">git clone git@github.com:olos-live/olos-live.github.io.git</code></li><li>Set the environment variable <code class="inline">OLOS_LIVE_DOCS_PATH</code> with the path to that project (only once):
+<code class="inline">export OLOS_LIVE_DOCS_PATH=/home/yourname/projects/olos-live/olos-live.github.io/</code></li><li>Run <code class="inline">./publish_docs.sh</code></li><li>Access <a href="https://olos-live.github.io/agenthub-client/">https://olos-live.github.io/agenthub-client/</a> to verify it. Please notice it takes some time
+to the CDN to invalidate the cache, so you might still see the previous version. To force the cache
+to be missed, append something to the URL like <code class="inline">?version=1</code></li></ul></li></ul>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 

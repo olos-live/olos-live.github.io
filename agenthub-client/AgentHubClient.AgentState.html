@@ -10,7 +10,7 @@
     <title>AgentHubClient.AgentState — AgentHub Client v0.0.30</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-52ddcb55cd.js"></script>
+    <script src="dist/sidebar_items-e8deee97ca.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -91,8 +91,8 @@ AgentHubClient.AgentState <small class="app-vsn">(AgentHub Client v0.0.30)</smal
 
 
         <section id="moduledoc">
-<p>Defines the agent state record to be used when dealing with Mnesia
-and the agent state strucuture to be used in all the rest of the
+<p>Defines the agent state record to be used when dealing with mnesia
+and the agent state struct to be used in all the rest of the
 application.</p>
         </section>
 
@@ -112,16 +112,20 @@ application.</p>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#t:chat_state/0">chat_state()</a>
+    <a href="#t:agent_state/0">agent_state()</a>
 
   </div>
+
+    <div class="summary-synopsis"><p>A struct representing the state of an agent.</p></div>
 
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#t:t/0">t()</a>
+    <a href="#t:chat_state/0">chat_state()</a>
 
   </div>
+
+    <div class="summary-synopsis"><p>An atom representing the state of a chat, like :idle or :chatting.</p></div>
 
 </div>
 <div class="summary-row">
@@ -129,6 +133,8 @@ application.</p>
     <a href="#t:voice_state/0">voice_state()</a>
 
   </div>
+
+    <div class="summary-synopsis"><p>An atom representing the state of voice, like :idle or :talking.</p></div>
 
 </div>
 
@@ -181,6 +187,46 @@ application.</p>
 Types
           </h1>
           <div class="types-list">
+<section class="detail" id="t:agent_state/0">
+
+  <div class="detail-header">
+    <a href="#t:agent_state/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">agent_state()</h1>
+
+      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>agent_state() :: %AgentHubClient.AgentState{
+  campaigns: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()],
+  chat_state: <a href="#t:chat_state/0">chat_state</a>(),
+  chat_state_since: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
+  inserted_at: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
+  next_voice_state: <a href="#t:voice_state/0">voice_state</a>(),
+  online_since: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
+  updated_at: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
+  user_id: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  voice_state: <a href="#t:voice_state/0">voice_state</a>(),
+  voice_state_since: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>()
+}</pre>
+
+      </div>
+
+<p>A struct representing the state of an agent.</p>
+  </section>
+</section>
 <section class="detail" id="t:chat_state/0">
 
   <div class="detail-header">
@@ -207,47 +253,7 @@ Types
 
       </div>
 
-
-  </section>
-</section>
-<section class="detail" id="t:t/0">
-
-  <div class="detail-header">
-    <a href="#t:t/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this type</span>
-    </a>
-    <h1 class="signature">t()</h1>
-
-      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-      <h2>Specs</h2>
-      <div class="specs">
-
-          <pre>t() :: %AgentHubClient.AgentState{
-  campaigns: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()],
-  chat_state: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
-  chat_state_since: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
-  inserted_at: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
-  next_voice_state: <a href="#t:voice_state/0">voice_state</a>(),
-  online_since: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
-  updated_at: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
-  user_id: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
-  voice_state: <a href="#t:voice_state/0">voice_state</a>(),
-  voice_state_since: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()
-}</pre>
-
-      </div>
-
-
+<p>An atom representing the state of a chat, like :idle or :chatting.</p>
   </section>
 </section>
 <section class="detail" id="t:voice_state/0">
@@ -287,7 +293,7 @@ Types
 
       </div>
 
-
+<p>An atom representing the state of voice, like :idle or :talking.</p>
   </section>
 </section>
 

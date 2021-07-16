@@ -10,7 +10,7 @@
     <title>AgentHubClient — AgentHub Client v0.0.30</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-52ddcb55cd.js"></script>
+    <script src="dist/sidebar_items-e8deee97ca.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -92,7 +92,8 @@ AgentHubClient <small class="app-vsn">(AgentHub Client v0.0.30)</small>
 
         <section id="moduledoc">
 <p>This is the main client module. It provides the top-level functions to interact with the AgentHub
-application, like inserting, deleting, updating and querying agent state and sending messages.</p>
+application, like querying the state of agents, fetching list of agents and sending messages to
+an agent.</p>
         </section>
 
 
@@ -111,9 +112,30 @@ application, like inserting, deleting, updating and querying agent state and sen
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#count_by_voice_state/2">count_by_voice_state(campaign_id, voice_state)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Returns the number of agents that are logged in a given campaign
+and that are in the given voice state.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#get_all/0">get_all()</a>
 
   </div>
+
+    <div class="summary-synopsis"><p>Returns a list of all agents that are logged in.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_all_in_campaign/1">get_all_in_campaign(campaign_id)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Returns a list of agents that are logged in a given campaign.</p></div>
 
 </div>
 <div class="summary-row">
@@ -122,47 +144,17 @@ application, like inserting, deleting, updating and querying agent state and sen
 
   </div>
 
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#get_talking/1">get_talking(campaign_id)</a>
-
-  </div>
+    <div class="summary-synopsis"><p>Returns the state of the agent given its user ID.</p></div>
 
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get_voice_idle/1">get_voice_idle(campaign_id)</a>
+    <a href="#get_by_voice_state/2">get_by_voice_state(campaign_id, voice_state)</a>
 
   </div>
 
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#insert/2">insert(user_id, campaigns)</a>
-
-  </div>
-
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#send_message/2">send_message(user_id, message)</a>
-
-  </div>
-
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#total_talking/1">total_talking(campaign_id)</a>
-
-  </div>
-
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#total_voice_idle/1">total_voice_idle(campaign_id)</a>
-
-  </div>
+    <div class="summary-synopsis"><p>Returns a list of agents that are logged in a given campaign
+and that are in the given voice state.</p></div>
 
 </div>
 
@@ -180,6 +172,37 @@ application, like inserting, deleting, updating and querying agent state and sen
 Functions
           </h1>
           <div class="functions-list">
+<section class="detail" id="count_by_voice_state/2">
+
+  <div class="detail-header">
+    <a href="#count_by_voice_state/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">count_by_voice_state(campaign_id, voice_state)</h1>
+
+      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>count_by_voice_state(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="AgentHubClient.AgentState.html#t:voice_state/0">AgentHubClient.AgentState.voice_state</a>()) ::
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+
+      </div>
+
+<p>Returns the number of agents that are logged in a given campaign
+and that are in the given voice state.</p>
+  </section>
+</section>
 <section class="detail" id="get_all/0">
 
   <div class="detail-header">
@@ -199,7 +222,43 @@ Functions
 
   <section class="docstring">
 
+      <h2>Specs</h2>
+      <div class="specs">
 
+          <pre>get_all() :: [<a href="AgentHubClient.AgentState.html#t:agent_state/0">AgentHubClient.AgentState.agent_state</a>()]</pre>
+
+      </div>
+
+<p>Returns a list of all agents that are logged in.</p>
+  </section>
+</section>
+<section class="detail" id="get_all_in_campaign/1">
+
+  <div class="detail-header">
+    <a href="#get_all_in_campaign/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_all_in_campaign(campaign_id)</h1>
+
+      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>get_all_in_campaign(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="AgentHubClient.AgentState.html#t:agent_state/0">AgentHubClient.AgentState.agent_state</a>()</pre>
+
+      </div>
+
+<p>Returns a list of agents that are logged in a given campaign.</p>
   </section>
 </section>
 <section class="detail" id="get_by_user_id/1">
@@ -221,17 +280,24 @@ Functions
 
   <section class="docstring">
 
+      <h2>Specs</h2>
+      <div class="specs">
 
+          <pre>get_by_user_id(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="AgentHubClient.AgentState.html#t:agent_state/0">AgentHubClient.AgentState.agent_state</a>()</pre>
+
+      </div>
+
+<p>Returns the state of the agent given its user ID.</p>
   </section>
 </section>
-<section class="detail" id="get_talking/1">
+<section class="detail" id="get_by_voice_state/2">
 
   <div class="detail-header">
-    <a href="#get_talking/1" class="detail-link" title="Link to this function">
+    <a href="#get_by_voice_state/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">get_talking(campaign_id)</h1>
+    <h1 class="signature">get_by_voice_state(campaign_id, voice_state)</h1>
 
       <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
@@ -243,117 +309,17 @@ Functions
 
   <section class="docstring">
 
+      <h2>Specs</h2>
+      <div class="specs">
 
-  </section>
-</section>
-<section class="detail" id="get_voice_idle/1">
+          <pre>get_by_voice_state(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="AgentHubClient.AgentState.html#t:voice_state/0">AgentHubClient.AgentState.voice_state</a>()) :: [
+  <a href="AgentHubClient.AgentState.html#t:agent_state/0">AgentHubClient.AgentState.agent_state</a>()
+]</pre>
 
-  <div class="detail-header">
-    <a href="#get_voice_idle/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">get_voice_idle(campaign_id)</h1>
+      </div>
 
-      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-
-  </section>
-</section>
-<section class="detail" id="insert/2">
-
-  <div class="detail-header">
-    <a href="#insert/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">insert(user_id, campaigns)</h1>
-
-      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-
-  </section>
-</section>
-<section class="detail" id="send_message/2">
-
-  <div class="detail-header">
-    <a href="#send_message/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">send_message(user_id, message)</h1>
-
-      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-
-  </section>
-</section>
-<section class="detail" id="total_talking/1">
-
-  <div class="detail-header">
-    <a href="#total_talking/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">total_talking(campaign_id)</h1>
-
-      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-
-  </section>
-</section>
-<section class="detail" id="total_voice_idle/1">
-
-  <div class="detail-header">
-    <a href="#total_voice_idle/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">total_voice_idle(campaign_id)</h1>
-
-      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-
+<p>Returns a list of agents that are logged in a given campaign
+and that are in the given voice state.</p>
   </section>
 </section>
 
