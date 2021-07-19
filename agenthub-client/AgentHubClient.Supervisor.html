@@ -5,12 +5,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.24.2">
-    <meta name="project" content="AgentHub Client v0.0.31">
+    <meta name="project" content="AgentHub Client v1.0.0-alpha.1">
 
-    <title>AgentHubClient.Supervisor — AgentHub Client v0.0.31</title>
+    <title>AgentHubClient.Supervisor — AgentHub Client v1.0.0-alpha.1</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-568148549c.js"></script>
+    <script src="dist/sidebar_items-16298cadcf.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -58,7 +58,7 @@
 AgentHub Client
       </a>
       <strong class="sidebar-projectVersion">
-        v0.0.31
+        v1.0.0-alpha.1
       </strong>
     </div>
 
@@ -80,7 +80,7 @@ AgentHub Client
     <div id="content" class="content-inner">
 
       <h1>
-AgentHubClient.Supervisor <small class="app-vsn">(AgentHub Client v0.0.31)</small>
+AgentHubClient.Supervisor <small class="app-vsn">(AgentHub Client v1.0.0-alpha.1)</small>
 
           <a href="http://10.15.5.210/olos-live/agenthub-client" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
@@ -91,16 +91,17 @@ AgentHubClient.Supervisor <small class="app-vsn">(AgentHub Client v0.0.31)</smal
 
 
         <section id="moduledoc">
-<p>Supervises mnesia and libcluster processes. The libcluster process
-is only used if the node is started with a name. Add it to your
-supervision tree (usually in <code class="inline">application.ex</code>). Example:</p><pre><code class="makeup elixir"><span class="w">  </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="1454691560-1">[</span><span class="w">
-    </span><span class="p" data-group-id="1454691560-2">{</span><span class="nc">AgentHubClient.Supervisor</span><span class="p">,</span><span class="w"> </span><span class="ss">replication</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="1454691560-2">}</span><span class="w">
-  </span><span class="p" data-group-id="1454691560-1">]</span><span class="w">
-  </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="1454691560-3">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="1454691560-3">)</span></code></pre><p>The only available option is <code class="inline">replication</code>. When enabled, a copy
+<p>Supervises the internal processes used by the client itself.</p><p>Add it to your supervision tree (usually in <code class="inline">application.ex</code>). Example:</p><pre><code class="makeup elixir"><span class="w">  </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="1313187016-1">[</span><span class="w">
+    </span><span class="p" data-group-id="1313187016-2">{</span><span class="nc">AgentHubClient.Supervisor</span><span class="p">,</span><span class="w"> </span><span class="ss">replication</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="1313187016-2">}</span><span class="w">
+  </span><span class="p" data-group-id="1313187016-1">]</span><span class="w">
+  </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="1313187016-3">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="1313187016-3">)</span></code></pre><p>The only available option is <code class="inline">replication</code>. When enabled, a copy
 of the mnesia table that holds agents state is kept locally in
 this node, so reading data is a local operation. If disabled,
 all access to the data is remote as the data is in the AgentHub
-node.</p>
+node.</p><p>Currently the internal processes that are supervised are mnesia
+and libcluster, where the libcluster process is only started if
+the node is started with a name, i.e, if it is started expecting
+it to be in a cluster and not standalone.</p>
         </section>
 
 

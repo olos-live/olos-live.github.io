@@ -5,12 +5,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.24.2">
-    <meta name="project" content="AgentHub Client v0.0.31">
+    <meta name="project" content="AgentHub Client v1.0.0-alpha.1">
 
-    <title>AgentHubClient — AgentHub Client v0.0.31</title>
+    <title>AgentHubClient — AgentHub Client v1.0.0-alpha.1</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-568148549c.js"></script>
+    <script src="dist/sidebar_items-16298cadcf.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -58,7 +58,7 @@
 AgentHub Client
       </a>
       <strong class="sidebar-projectVersion">
-        v0.0.31
+        v1.0.0-alpha.1
       </strong>
     </div>
 
@@ -80,7 +80,7 @@ AgentHub Client
     <div id="content" class="content-inner">
 
       <h1>
-AgentHubClient <small class="app-vsn">(AgentHub Client v0.0.31)</small>
+AgentHubClient <small class="app-vsn">(AgentHub Client v1.0.0-alpha.1)</small>
 
           <a href="http://10.15.5.210/olos-live/agenthub-client" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
@@ -112,11 +112,12 @@ an agent.</p>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#count_by_state/1">count_by_state(campaign_id)</a>
+    <a href="#count_by_voice_state/1">count_by_voice_state(campaign_id)</a>
 
   </div>
 
-    <div class="summary-synopsis"><p>Returns the number of agents by state in a given campaign.</p></div>
+    <div class="summary-synopsis"><p>Returns the number of agents on each voice state that has at least one agent,
+i.e., it won't include a state that has no agents in that state.</p></div>
 
 </div>
 <div class="summary-row">
@@ -161,14 +162,14 @@ an agent.</p>
 Functions
           </h1>
           <div class="functions-list">
-<section class="detail" id="count_by_state/1">
+<section class="detail" id="count_by_voice_state/1">
 
   <div class="detail-header">
-    <a href="#count_by_state/1" class="detail-link" title="Link to this function">
+    <a href="#count_by_voice_state/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">count_by_state(campaign_id)</h1>
+    <h1 class="signature">count_by_voice_state(campaign_id)</h1>
 
       <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
@@ -183,17 +184,22 @@ Functions
       <h2>Specs</h2>
       <div class="specs">
 
-          <pre>count_by_state(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+          <pre>count_by_voice_state(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: %{
+  optional(<a href="AgentHubClient.AgentState.html#t:voice_state/0">AgentHubClient.AgentState.voice_state</a>()) =&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()
+}</pre>
 
       </div>
 
-<p>Returns the number of agents by state in a given campaign.</p><h2 id="count_by_state/1-examples" class="section-heading">
-  <a href="#count_by_state/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+<p>Returns the number of agents on each voice state that has at least one agent,
+i.e., it won't include a state that has no agents in that state.</p><h2 id="count_by_voice_state/1-examples" class="section-heading">
+  <a href="#count_by_voice_state/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<p>  iex&gt; AgentHubClient.count_by_state(&quot;campaign1&quot;)
-  {:ok, %{idle: 1, talking: 1}}</p><p>  iex&gt; AgentHubClient.count_by_state(&quot;inexistent&quot;)
-  {:ok, %{}}</p>
+<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">AgentHubClient</span><span class="o">.</span><span class="n">count_by_voice_state</span><span class="p" data-group-id="8405972413-1">(</span><span class="s">&quot;campaign1&quot;</span><span class="p" data-group-id="8405972413-1">)</span><span class="w">
+</span><span class="p" data-group-id="8405972413-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8405972413-3">%{</span><span class="ss">idle</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">talking</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="8405972413-3">}</span><span class="p" data-group-id="8405972413-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">AgentHubClient</span><span class="o">.</span><span class="n">count_by_voice_state</span><span class="p" data-group-id="8405972413-4">(</span><span class="s">&quot;inexistent&quot;</span><span class="p" data-group-id="8405972413-4">)</span><span class="w">
+</span><span class="p" data-group-id="8405972413-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8405972413-6">%{</span><span class="p" data-group-id="8405972413-6">}</span><span class="p" data-group-id="8405972413-5">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="get_all/0">

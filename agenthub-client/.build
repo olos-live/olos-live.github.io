@@ -1,15 +1,5 @@
 404.html
 AgentHubClient.AgentState.html
-AgentHubClient.Cluster.html
-AgentHubClient.Mnesia.Delete.html
-AgentHubClient.Mnesia.Init.html
-AgentHubClient.Mnesia.Insert.html
-AgentHubClient.Mnesia.Monitor.html
-AgentHubClient.Mnesia.Queries.html
-AgentHubClient.Mnesia.Setup.html
-AgentHubClient.Mnesia.Updates.html
-AgentHubClient.Mnesia.Utils.html
-AgentHubClient.Store.html
 AgentHubClient.Supervisor.html
 AgentHubClient.html
 api-reference.html
@@ -19,8 +9,8 @@ dist/html/fonts/icomoon.eot
 dist/html/fonts/icomoon.svg
 dist/html/fonts/icomoon.ttf
 dist/html/fonts/icomoon.woff
-dist/search_items-43aee23426.js
-dist/sidebar_items-568148549c.js
+dist/search_items-e4a3fed629.js
+dist/sidebar_items-16298cadcf.js
 index.html
 readme.html
 search.html
