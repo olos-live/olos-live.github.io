@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.24.2">
     <meta name="project" content="AgentHub Client v1.0.0-alpha.2">
 
-    <title>AgentHubClient.AgentState — AgentHub Client v1.0.0-alpha.2</title>
+    <title>AgentHubClient.Cluster — AgentHub Client v1.0.0-alpha.2</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
     <script src="dist/sidebar_items-31e57a52b4.js"></script>
@@ -80,7 +80,7 @@ AgentHub Client
     <div id="content" class="content-inner">
 
       <h1>
-AgentHubClient.AgentState <small class="app-vsn">(AgentHub Client v1.0.0-alpha.2)</small>
+AgentHubClient.Cluster <small class="app-vsn">(AgentHub Client v1.0.0-alpha.2)</small>
 
           <a href="http://10.15.5.210/olos-live/agenthub-client" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
@@ -91,9 +91,9 @@ AgentHubClient.AgentState <small class="app-vsn">(AgentHub Client v1.0.0-alpha.2
 
 
         <section id="moduledoc">
-<p>Defines the agent state record to be used when dealing with mnesia
-and the agent state struct to be used in all the rest of the
-application.</p>
+<p>  # Provides supporting functions for dealing with node names,
+  # like identifying the application in which the client is
+  # running based on the node name.</p>
         </section>
 
 
@@ -106,68 +106,52 @@ application.</p>
             Summary
           </h1>
 
-  <div class="summary-types summary">
-    <h2>
-      <a href="#types">Types</a>
-    </h2>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:agent_state/0">agent_state()</a>
-
-  </div>
-
-    <div class="summary-synopsis"><p>A struct representing the state of an agent.</p></div>
-
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:chat_state/0">chat_state()</a>
-
-  </div>
-
-    <div class="summary-synopsis"><p>An atom representing the state of a chat, like :idle or :chatting.</p></div>
-
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:voice_state/0">voice_state()</a>
-
-  </div>
-
-    <div class="summary-synopsis"><p>An atom representing the state of voice, like <code class="inline">:idle</code> or <code class="inline">:talking</code>.</p></div>
-
-</div>
-
-  </div>
-
   <div class="summary-functions summary">
     <h2>
       <a href="#functions">Functions</a>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#agent_state/1">agent_state(args \\ [])</a>
+    <a href="#agenthub?/1">agenthub?(node \\ Node.self())</a>
 
   </div>
+
+    <div class="summary-synopsis"><p>Returns true iff the given node atom looks like an AgentHub node.
+If no node is given, assumes the current node.</p></div>
 
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#agent_state/2">agent_state(record, args)</a>
+    <a href="#connected_to_agenthub?/0">connected_to_agenthub?()</a>
 
   </div>
+
+    <div class="summary-synopsis"><p>Returns true iff the current node is connected to at least one AgentHub node</p></div>
 
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#attributes/0">attributes()</a>
+    <a href="#get_host/1">get_host(node)</a>
 
   </div>
+
+    <div class="summary-synopsis"><p>Returns the host part of the given node atom (like the one from <a href="https://hexdocs.pm/elixir/Node.html#self/0"><code class="inline">Node.self/0</code></a>)
+as a string.</p></div>
 
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#record_to_struct/1">record_to_struct(arg)</a>
+    <a href="#parse_node/1">parse_node(node)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Parses the given node atom (like the one from <a href="https://hexdocs.pm/elixir/Node.html#self/0"><code class="inline">Node.self/0</code></a>)
+and returns its individual components as strings.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#standalone?/0">standalone?()</a>
 
   </div>
 
@@ -177,128 +161,6 @@ application.</p>
 
         </section>
 
-
-        <section id="types" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#types">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-Types
-          </h1>
-          <div class="types-list">
-<section class="detail" id="t:agent_state/0">
-
-  <div class="detail-header">
-    <a href="#t:agent_state/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this type</span>
-    </a>
-    <h1 class="signature">agent_state()</h1>
-
-      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-      <h2>Specs</h2>
-      <div class="specs">
-
-          <pre>agent_state() :: %AgentHubClient.AgentState{
-  campaigns: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()],
-  chat_state: <a href="#t:chat_state/0">chat_state</a>(),
-  chat_state_since: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
-  inserted_at: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
-  next_voice_state: <a href="#t:voice_state/0">voice_state</a>(),
-  online_since: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
-  updated_at: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
-  user_id: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
-  voice_state: <a href="#t:voice_state/0">voice_state</a>(),
-  voice_state_since: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>()
-}</pre>
-
-      </div>
-
-<p>A struct representing the state of an agent.</p>
-  </section>
-</section>
-<section class="detail" id="t:chat_state/0">
-
-  <div class="detail-header">
-    <a href="#t:chat_state/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this type</span>
-    </a>
-    <h1 class="signature">chat_state()</h1>
-
-      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-      <h2>Specs</h2>
-      <div class="specs">
-
-          <pre>chat_state() :: :idle | :chatting | :wrap | :pause | :ending</pre>
-
-      </div>
-
-<p>An atom representing the state of a chat, like :idle or :chatting.</p>
-  </section>
-</section>
-<section class="detail" id="t:voice_state/0">
-
-  <div class="detail-header">
-    <a href="#t:voice_state/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this type</span>
-    </a>
-    <h1 class="signature">voice_state()</h1>
-
-      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-      <h2>Specs</h2>
-      <div class="specs">
-
-          <pre>voice_state() ::
-  :idle
-  | :talking
-  | :consulting
-  | :holding
-  | :transferring
-  | :redial
-  | :wrap
-  | :pause
-  | :ending
-  | :private_callback
-  | :personal_call</pre>
-
-      </div>
-
-<p>An atom representing the state of voice, like <code class="inline">:idle</code> or <code class="inline">:talking</code>.</p>
-  </section>
-</section>
-
-          </div>
-        </section>
 
         <section id="functions" class="details-list">
           <h1 class="section-heading">
@@ -309,64 +171,16 @@ Types
 Functions
           </h1>
           <div class="functions-list">
-<section class="detail" id="agent_state/1">
+<section class="detail" id="agenthub?/1">
 
-    <span id="agent_state/0"></span>
-
-  <div class="detail-header">
-    <a href="#agent_state/1" class="detail-link" title="Link to this macro">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this macro</span>
-    </a>
-    <h1 class="signature">agent_state(args \\ [])</h1>
-
-      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-      <span class="note">(macro)</span>
-
-  </div>
-
-  <section class="docstring">
-
-
-  </section>
-</section>
-<section class="detail" id="agent_state/2">
+    <span id="agenthub?/0"></span>
 
   <div class="detail-header">
-    <a href="#agent_state/2" class="detail-link" title="Link to this macro">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this macro</span>
-    </a>
-    <h1 class="signature">agent_state(record, args)</h1>
-
-      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-      <span class="note">(macro)</span>
-
-  </div>
-
-  <section class="docstring">
-
-
-  </section>
-</section>
-<section class="detail" id="attributes/0">
-
-  <div class="detail-header">
-    <a href="#attributes/0" class="detail-link" title="Link to this function">
+    <a href="#agenthub?/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">attributes()</h1>
+    <h1 class="signature">agenthub?(node \\ Node.self())</h1>
 
       <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
@@ -378,17 +192,113 @@ Functions
 
   <section class="docstring">
 
+<p>Returns true iff the given node atom looks like an AgentHub node.
+If no node is given, assumes the current node.</p><h2 id="agenthub?/1-examples" class="section-heading">
+  <a href="#agenthub?/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">AgentHubClient.Cluster</span><span class="o">.</span><span class="n">agenthub?</span><span class="w"> </span><span class="ss">:&quot;agenthub-xkpto123-blabla1@192.168.0.15&quot;</span><span class="w">
+</span><span class="no">true</span><span class="w">
 
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">AgentHubClient.Cluster</span><span class="o">.</span><span class="n">agenthub?</span><span class="w"> </span><span class="ss">:&quot;nonode@nohost&quot;</span><span class="w">
+</span><span class="no">false</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">AgentHubClient.Cluster</span><span class="o">.</span><span class="n">agenthub?</span><span class="w"> </span><span class="ss">:&quot;dialer@192.168.0.15&quot;</span><span class="w">
+</span><span class="no">false</span></code></pre>
   </section>
 </section>
-<section class="detail" id="record_to_struct/1">
+<section class="detail" id="connected_to_agenthub?/0">
 
   <div class="detail-header">
-    <a href="#record_to_struct/1" class="detail-link" title="Link to this function">
+    <a href="#connected_to_agenthub?/0" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">record_to_struct(arg)</h1>
+    <h1 class="signature">connected_to_agenthub?()</h1>
+
+      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns true iff the current node is connected to at least one AgentHub node</p>
+  </section>
+</section>
+<section class="detail" id="get_host/1">
+
+  <div class="detail-header">
+    <a href="#get_host/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_host(node)</h1>
+
+      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns the host part of the given node atom (like the one from <a href="https://hexdocs.pm/elixir/Node.html#self/0"><code class="inline">Node.self/0</code></a>)
+as a string.</p><h2 id="get_host/1-examples" class="section-heading">
+  <a href="#get_host/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">AgentHubClient.Cluster</span><span class="o">.</span><span class="n">get_host</span><span class="w"> </span><span class="ss">:&quot;agenthub1@127.0.0.1&quot;</span><span class="w">
+</span><span class="s">&quot;127.0.0.1&quot;</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">AgentHubClient.Cluster</span><span class="o">.</span><span class="n">get_host</span><span class="w"> </span><span class="ss">:&quot;nonode@nohost&quot;</span><span class="w">
+</span><span class="s">&quot;nohost&quot;</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="parse_node/1">
+
+  <div class="detail-header">
+    <a href="#parse_node/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_node(node)</h1>
+
+      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Parses the given node atom (like the one from <a href="https://hexdocs.pm/elixir/Node.html#self/0"><code class="inline">Node.self/0</code></a>)
+and returns its individual components as strings.</p><h2 id="parse_node/1-examples" class="section-heading">
+  <a href="#parse_node/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">AgentHubClient.Cluster</span><span class="o">.</span><span class="n">parse_node</span><span class="w"> </span><span class="ss">:&quot;agenthub1@127.0.0.1&quot;</span><span class="w">
+</span><span class="p" data-group-id="6445434278-1">[</span><span class="s">&quot;agenthub1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="p" data-group-id="6445434278-1">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">AgentHubClient.Cluster</span><span class="o">.</span><span class="n">parse_node</span><span class="w"> </span><span class="ss">:&quot;nonode@nohost&quot;</span><span class="w">
+</span><span class="p" data-group-id="6445434278-2">[</span><span class="s">&quot;nonode&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;nohost&quot;</span><span class="p" data-group-id="6445434278-2">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="standalone?/0">
+
+  <div class="detail-header">
+    <a href="#standalone?/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">standalone?()</h1>
 
       <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
