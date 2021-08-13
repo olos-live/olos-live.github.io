@@ -1,6 +1,5 @@
 404.html
 AgentHubClient.AgentState.html
-AgentHubClient.Cluster.html
 AgentHubClient.Supervisor.html
 AgentHubClient.html
 api-reference.html
@@ -10,8 +9,8 @@ dist/html/fonts/icomoon.eot
 dist/html/fonts/icomoon.svg
 dist/html/fonts/icomoon.ttf
 dist/html/fonts/icomoon.woff
-dist/search_items-e0d1f0670b.js
-dist/sidebar_items-31e57a52b4.js
+dist/search_items-74ce445a48.js
+dist/sidebar_items-16298cadcf.js
 index.html
 readme.html
 search.html
