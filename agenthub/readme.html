@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.25.1">
+    <meta name="project" content="AgentHub v1.0.0-alpha.1">
+
+    <title>AgentHub — AgentHub v1.0.0-alpha.1</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+
+    <script src="dist/sidebar_items-200022c591.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+
+  </head>
+  <body data-type="extras">
+    <script>
+
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="https://olos-live.github.io/agenthub" class="sidebar-projectName">
+AgentHub
+      </a>
+      <strong class="sidebar-projectVersion">
+        v1.0.0-alpha.1
+      </strong>
+    </div>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>AgentHub</h1><p>The AgentHub application is part of the Olos Live solution and it is responsible for:</p><ul><li>keeping the list of agents that are logged-in along with voice and chat state attributes;</li><li>handling request from the agents like pause, unpause;</li><li>providing an agent from this list to other applications based on rules indicated in the request;</li><li>enqueueing such requests when there are no available agents that satisfy the criteria;</li><li>notifying the requester of enqueued requests when an agent becomes available;</li><li>communicating in real-time with the agents via websockets for sending/receiving events/requests;</li></ul><h2 id="initial-setup-to-work-on-this-project" class="section-heading">
+  <a href="#initial-setup-to-work-on-this-project" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Initial setup to work on this project
+</h2>
+<ul><li>Install <a href="https://elixir-lang.org/install.html">Elixir</a></li><li>Clone the project using <code class="inline">git clone</code></li><li>Install dependencies with <a href="https://hexdocs.pm/mix/Mix.Tasks.Deps.Get.html"><code class="inline">mix deps.get</code></a></li><li>Install Node.js dependencies with <code class="inline">npm install</code> inside the <code class="inline">assets</code> directory</li></ul><h2 id="running-the-application" class="section-heading">
+  <a href="#running-the-application" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Running the application
+</h2>
+<h3 id="in-standalone-mode" class="section-heading">
+  <a href="#in-standalone-mode" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  In standalone mode
+</h3>
+<p>Use this option while developing and testing the application locally in your laptop
+as you would do with any other Phoenix aplication:</p><pre><code class="makeup elixir"><span class="n">iex</span><span class="w"> </span><span class="o">-</span><span class="nc">S</span><span class="w"> </span><span class="n">mix</span><span class="w"> </span><span class="n">phx</span><span class="o">.</span><span class="n">server</span></code></pre><h3 id="in-local-cluster-mode" class="section-heading">
+  <a href="#in-local-cluster-mode" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  In local cluster mode
+</h3>
+<p>Use this option while developing and testing any cluster-related feature of the
+application that requires at least two running instances in your laptop but
+doesn't require kubernetes:</p><pre><code class="makeup elixir"><span class="o">.</span><span class="o">/</span><span class="n">start</span><span class="o">.</span><span class="n">sh</span><span class="w"> </span><span class="mi">1</span></code></pre><p>and in another terminal</p><pre><code class="makeup elixir"><span class="o">.</span><span class="o">/</span><span class="n">start</span><span class="o">.</span><span class="n">sh</span><span class="w"> </span><span class="mi">2</span></code></pre><p>At this point you have a cluster with 2 nodes running in your local computer.
+Both can process requests equally and data are kept in synch between the two
+nodes via Mnesia replication, no matter which node has received the request.</p><p>You can open two or more browsers pointing to <code class="inline">localhost</code> using ports <code class="inline">4000</code>
+and <code class="inline">4001</code>.</p><p>Feel free to kill any of the nodes as the other will keep running and processing
+requests and keeping the state. As the state is kept in memory, if you kill both
+nodes than the state is lost. </p><p>To re-start the failed node, simply run the start command again, informing either
+1 or 2 depending on which node you have killed. The starting node will automatically
+fetch the data from the remote node and be ready to process requests. </p><h3 id="using-minikube" class="section-heading">
+  <a href="#using-minikube" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Using minikube
+</h3>
+<p>Use this option if you need to develop or work on features that require that your
+application is running on kubernetes and you want to work locally in your laptop
+instead on an actual remote kubernetes cluster.</p><p>Start Minikube</p><pre><code class="makeup elixir"><span class="n">minikube</span><span class="w"> </span><span class="n">start</span></code></pre><p>Open Kubernetes dashboard:</p><pre><code class="makeup elixir"><span class="n">minikube</span><span class="w"> </span><span class="n">dashboard</span><span class="w"> </span><span class="o">&amp;</span></code></pre><p>Open a tunnel so your load balancer in kubernetes gets an external IP you can use to access the application:</p><pre><code class="makeup elixir"><span class="n">minikube</span><span class="w"> </span><span class="n">tunnel</span></code></pre><p>Configure your shell session so Docker uses Minikube to store the local images you build:</p><pre><code class="makeup elixir"><span class="n">eval</span><span class="w"> </span><span class="err">$</span><span class="p" data-group-id="9492924801-1">(</span><span class="n">minikube</span><span class="w"> </span><span class="n">docker</span><span class="o">-</span><span class="n">env</span><span class="p" data-group-id="9492924801-1">)</span></code></pre><p>If you want to revert it later, use <code class="inline">eval $(minikube docker-env -u)</code></p><p>Build the docker image (make sure you have updated the version in your <code class="inline">mix.exs</code> file first):</p><pre><code class="makeup elixir"><span class="o">.</span><span class="o">/</span><span class="n">build</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">sh</span><span class="w"> </span><span class="n">local</span></code></pre><p>or</p><pre><code class="makeup elixir"><span class="o">.</span><span class="o">/</span><span class="n">build</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">sh</span><span class="w"> </span><span class="n">remote</span></code></pre><p><code class="inline">local</code> means it will use a local copy of the <a href="https://hexdocs.pm/agenthub_client/1.0.0-alpha.2/AgentHubClient.html"><code class="inline">AgentHubClient</code></a> library;
+<code class="inline">remote</code> means it will use the <a href="https://hexdocs.pm/agenthub_client/1.0.0-alpha.2/AgentHubClient.html"><code class="inline">AgentHubClient</code></a> library from the git repository.</p><p>Deploy to kubernetes:</p><pre><code class="makeup elixir"><span class="o">.</span><span class="o">/</span><span class="n">deploy</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">kube</span><span class="o">.</span><span class="n">sh</span></code></pre><p>To watch the logs:</p><pre><code class="makeup elixir"><span class="o">.</span><span class="o">/</span><span class="n">logs</span><span class="o">.</span><span class="n">sh</span></code></pre><p>To connect into the running application via <code class="inline">iex</code>, first figure out the pod name:</p><pre><code class="makeup elixir"><span class="n">kubectl</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">pods</span></code></pre><p>Then run the command like below, replacing the pod name by the actual value:</p><pre><code class="makeup elixir"><span class="n">kubectl</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="o">--</span><span class="n">stdin</span><span class="w"> </span><span class="o">--</span><span class="n">tty</span><span class="w"> </span><span class="n">agenthub</span><span class="o">-</span><span class="mi">6</span><span class="n">b6b89dcb8</span><span class="o">-</span><span class="n">gggjd</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">sh</span><span class="w"> </span><span class="o">.</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">agenthub</span><span class="w"> </span><span class="n">remote</span></code></pre><p>To scale the application (3 is just an example, you can set it to 0):</p><pre><code class="makeup elixir"><span class="n">kubectl</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">--</span><span class="n">replicas</span><span class="o">=</span><span class="mi">3</span><span class="w"> </span><span class="n">deployment</span><span class="o">/</span><span class="n">agenthub</span></code></pre><p>To delete a deployment before re-creating it if necessary:</p><pre><code class="makeup elixir"><span class="o">.</span><span class="o">/</span><span class="n">delete</span><span class="o">-</span><span class="n">deployment</span><span class="o">.</span><span class="n">sh</span></code></pre><p>To access the application webpage, first get the external IP address of the load balancer:</p><pre><code class="makeup elixir"><span class="n">kubectl</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">services</span><span class="w"> </span><span class="n">agenthub</span><span class="o">-</span><span class="n">lb</span></code></pre><p>Add it to your <code class="inline">/etc/hosts</code> as the IP associated with the name <code class="inline">agenthub</code></p><p>Now you can open multiple browser windows pointing to <code class="inline">http://agenthub:4000</code></p><p>To publish the image to DockerHub, first tag it:</p><pre><code class="makeup elixir"><span class="n">docker</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="n">tag</span><span class="w"> </span><span class="n">agenthub</span><span class="p">:</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">2</span><span class="w"> </span><span class="n">rogerweb</span><span class="o">/</span><span class="n">agenthub</span><span class="p">:</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">2</span></code></pre><p>Then push it:</p><pre><code class="makeup elixir"><span class="n">docker</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">rogerweb</span><span class="o">/</span><span class="n">agenthub</span><span class="p">:</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">2</span></code></pre><p>Use <code class="inline">docker login</code> if you are not logged in DockerHub yet.</p><h2 id="todo" class="section-heading">
+  <a href="#todo" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  TODO
+</h2>
+
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="api-reference.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+API Reference
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.25.1) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
