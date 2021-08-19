@@ -5,9 +5,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.24.2">
-    <meta name="project" content="AgentHub Client v1.0.0-alpha.2">
+    <meta name="project" content="AgentHub Client v1.0.0-alpha.3">
 
-    <title>AgentHubClient.Supervisor — AgentHub Client v1.0.0-alpha.2</title>
+    <title>AgentHubClient.Supervisor — AgentHub Client v1.0.0-alpha.3</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
     <script src="dist/sidebar_items-16298cadcf.js"></script>
@@ -58,7 +58,7 @@
 AgentHub Client
       </a>
       <strong class="sidebar-projectVersion">
-        v1.0.0-alpha.2
+        v1.0.0-alpha.3
       </strong>
     </div>
 
@@ -80,7 +80,7 @@ AgentHub Client
     <div id="content" class="content-inner">
 
       <h1>
-AgentHubClient.Supervisor <small class="app-vsn">(AgentHub Client v1.0.0-alpha.2)</small>
+AgentHubClient.Supervisor <small class="app-vsn">(AgentHub Client v1.0.0-alpha.3)</small>
 
           <a href="http://10.15.5.210/olos-live/agenthub-client" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
@@ -91,10 +91,10 @@ AgentHubClient.Supervisor <small class="app-vsn">(AgentHub Client v1.0.0-alpha.2
 
 
         <section id="moduledoc">
-<p>Supervises the internal processes used by the client itself.</p><p>Add it to your supervision tree (usually in <code class="inline">application.ex</code>). Example:</p><pre><code class="makeup elixir"><span class="w">  </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9186742187-1">[</span><span class="w">
-    </span><span class="p" data-group-id="9186742187-2">{</span><span class="nc">AgentHubClient.Supervisor</span><span class="p">,</span><span class="w"> </span><span class="ss">replication</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="9186742187-2">}</span><span class="w">
-  </span><span class="p" data-group-id="9186742187-1">]</span><span class="w">
-  </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="9186742187-3">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="9186742187-3">)</span></code></pre><p>The only available option is <code class="inline">replication</code>. When enabled, a copy
+<p>Supervises the internal processes used by the client itself.</p><p>Add it to your supervision tree (usually in <code class="inline">application.ex</code>). Example:</p><pre><code class="makeup elixir"><span class="w">  </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7662134524-1">[</span><span class="w">
+    </span><span class="p" data-group-id="7662134524-2">{</span><span class="nc">AgentHubClient.Supervisor</span><span class="p">,</span><span class="w"> </span><span class="ss">replication</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="7662134524-2">}</span><span class="w">
+  </span><span class="p" data-group-id="7662134524-1">]</span><span class="w">
+  </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="7662134524-3">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="7662134524-3">)</span></code></pre><p>The only available option is <code class="inline">replication</code>. When enabled, a copy
 of the mnesia table that holds agents state is kept locally in
 this node, so reading data is a local operation. If disabled,
 all access to the data is remote as the data is in the AgentHub
