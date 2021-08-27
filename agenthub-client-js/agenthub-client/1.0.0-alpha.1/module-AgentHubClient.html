@@ -588,7 +588,7 @@ long polling, authenticating via the given token.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line110">line 110</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line118">line 118</a>
     </li></ul></dd>
     
 
@@ -948,7 +948,7 @@ Available events:</p>
 
     
 
-    <h4 class="name" id="pause"><span class="type-signature"></span>pause<span class="signature">(pauseCode)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="pause"><span class="type-signature"></span>pause<span class="signature">(pauseRequest)</span><span class="type-signature"></span></h4>
 
     
 
@@ -1013,7 +1013,7 @@ Available events:</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>agenthub.pause("pause-23")</code></pre>
+    <pre class="prettyprint"><code>agenthub.pause({userId: "roger", pauseCode: "pause-23"})</code></pre>
 
 
 
@@ -1043,13 +1043,13 @@ Available events:</p>
 
         <tr>
             
-                <td class="name"><code>pauseCode</code></td>
+                <td class="name"><code>pauseRequest</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">PauseRequest</span>
 
 
             
@@ -1059,7 +1059,7 @@ Available events:</p>
 
             
 
-            <td class="description last"><p>The pause code string.</p></td>
+            <td class="description last"><p>The pause request object.</p></td>
         </tr>
 
     
@@ -1097,6 +1097,154 @@ Available events:</p>
 
         
                 
+<h4 class="name" id="PauseRequest">PauseRequest</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line103">line 103</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The id of the user that shall enter in pause.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pauseCode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The code of the pause.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description usertext">
+    <p>A pause request.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+                
 <h4 class="name" id="Response">Response</h4>
 
 
@@ -1108,7 +1256,7 @@ Available events:</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line114">line 114</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line122">line 122</a>
     </li></ul></dd>
     
 
@@ -1290,7 +1438,7 @@ to a request you have made to the AgentHub server.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line124">line 124</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line132">line 132</a>
     </li></ul></dd>
     
 
@@ -1377,7 +1525,7 @@ to a request you have made to the AgentHub server.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line130">line 130</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line138">line 138</a>
     </li></ul></dd>
     
 
@@ -1464,7 +1612,7 @@ to a request you have made to the AgentHub server.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line144">line 144</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line152">line 152</a>
     </li></ul></dd>
     
 
@@ -1562,7 +1710,7 @@ The payload contains the success or error response.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line136">line 136</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line144">line 144</a>
     </li></ul></dd>
     
 
@@ -1659,7 +1807,7 @@ The payload contains the success or error response.</p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Thu Aug 19 2021 15:25:55 GMT-0300 (Brasilia Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Fri Aug 27 2021 15:21:34 GMT-0300 (Brasilia Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
