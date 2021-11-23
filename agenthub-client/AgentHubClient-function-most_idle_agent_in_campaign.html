@@ -112,7 +112,26 @@ AgentHub Client
 
       </div>
 
-<p>Returns the agent that is idle for voice for the longest time in a given campaign.</p>
+<p>Returns the agent that is idle for voice for the longest time in a given campaign.</p><h2 id="most_idle_agent_in_campaign/1-example" class="section-heading">
+  <a href="#most_idle_agent_in_campaign/1-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example:
+</h2>
+<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">AgentHubClient</span><span class="o">.</span><span class="n">most_idle_agent_in_campaign</span><span class="p" data-group-id="2948690421-1">(</span><span class="s">&quot;2&quot;</span><span class="p" data-group-id="2948690421-1">)</span><span class="w">
+</span><span class="p" data-group-id="2948690421-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="2948690421-3">%</span><span class="nc" data-group-id="2948690421-3">AgentHubClient.AgentState</span><span class="p" data-group-id="2948690421-3">{</span><span class="w">
+   </span><span class="ss">chat_state</span><span class="p">:</span><span class="w"> </span><span class="ss">:idle</span><span class="p">,</span><span class="w">
+   </span><span class="ss">chat_state_since</span><span class="p">:</span><span class="w"> </span><span class="ld">~U[2021-11-23 12:26:32.111511Z]</span><span class="p">,</span><span class="w">
+   </span><span class="ss">inserted_at</span><span class="p">:</span><span class="w"> </span><span class="ld">~U[2021-11-23 12:26:32.111511Z]</span><span class="p">,</span><span class="w">
+   </span><span class="ss">next_chat_state</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w">
+   </span><span class="ss">next_voice_state</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w">
+   </span><span class="ss">online_since</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w">
+   </span><span class="ss">pause_code</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w">
+   </span><span class="ss">updated_at</span><span class="p">:</span><span class="w"> </span><span class="ld">~U[2021-11-23 12:26:32.111563Z]</span><span class="p">,</span><span class="w">
+   </span><span class="ss">user_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;S268CtruX6MG6mpmTjZ9ZU&quot;</span><span class="p">,</span><span class="w">
+   </span><span class="ss">user_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Mrs. Selena Parisian&quot;</span><span class="p">,</span><span class="w">
+   </span><span class="ss">voice_state</span><span class="p">:</span><span class="w"> </span><span class="ss">:idle</span><span class="p">,</span><span class="w">
+   </span><span class="ss">voice_state_since</span><span class="p">:</span><span class="w"> </span><span class="ld">~U[2021-11-23 12:26:32.111563Z]</span><span class="w">
+</span><span class="p" data-group-id="2948690421-3">}</span><span class="p" data-group-id="2948690421-2">}</span></code></pre>
   </section>
 </section>
 
