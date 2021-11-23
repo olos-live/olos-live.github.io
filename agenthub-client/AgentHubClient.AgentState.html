@@ -5,12 +5,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.24.2">
-    <meta name="project" content="AgentHub Client v1.0.0-alpha.3">
+    <meta name="project" content="AgentHub Client v1.0.0-alpha.10">
 
-    <title>AgentHubClient.AgentState — AgentHub Client v1.0.0-alpha.3</title>
+    <title>AgentHubClient.AgentState — AgentHub Client v1.0.0-alpha.10</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-16298cadcf.js"></script>
+    <script src="dist/sidebar_items-801a9ad5d7.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -58,7 +58,7 @@
 AgentHub Client
       </a>
       <strong class="sidebar-projectVersion">
-        v1.0.0-alpha.3
+        v1.0.0-alpha.10
       </strong>
     </div>
 
@@ -80,7 +80,7 @@ AgentHub Client
     <div id="content" class="content-inner">
 
       <h1>
-AgentHubClient.AgentState <small class="app-vsn">(AgentHub Client v1.0.0-alpha.3)</small>
+AgentHubClient.AgentState <small class="app-vsn">(AgentHub Client v1.0.0-alpha.10)</small>
 
           <a href="http://10.15.5.210/olos-live/agenthub-client" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
@@ -112,20 +112,20 @@ application.</p>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#t:agent_state/0">agent_state()</a>
-
-  </div>
-
-    <div class="summary-synopsis"><p>A struct representing the state of an agent.</p></div>
-
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
     <a href="#t:chat_state/0">chat_state()</a>
 
   </div>
 
     <div class="summary-synopsis"><p>An atom representing the agent's state related to chat operations.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/0">t()</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A struct representing the state of an agent.</p></div>
 
 </div>
 <div class="summary-row">
@@ -164,12 +164,25 @@ application.</p>
 
   </div>
 
+    <div class="summary-synopsis"><p>The list of attributes. Used when creating Mnesia tables. See <a href="#t:t/0"><code class="inline">t/0</code></a>.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#record_to_struct/1">record_to_struct(arg)</a>
+    <a href="#from_record/1">from_record(arg1)</a>
 
   </div>
+
+    <div class="summary-synopsis"><p>Creates an AgentState struct from a record.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#voice_states/0">voice_states()</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>The list of voice states. Used to expose this enumeration to external modules.</p></div>
 
 </div>
 
@@ -187,47 +200,6 @@ application.</p>
 Types
           </h1>
           <div class="types-list">
-<section class="detail" id="t:agent_state/0">
-
-  <div class="detail-header">
-    <a href="#t:agent_state/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this type</span>
-    </a>
-    <h1 class="signature">agent_state()</h1>
-
-      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-      <h2>Specs</h2>
-      <div class="specs">
-
-          <pre>agent_state() :: %AgentHubClient.AgentState{
-  campaigns: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()],
-  chat_state: <a href="#t:chat_state/0">chat_state</a>(),
-  chat_state_since: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
-  inserted_at: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
-  next_voice_state: <a href="#t:voice_state/0">voice_state</a>(),
-  online_since: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
-  pause_code: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
-  updated_at: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
-  user_id: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
-  voice_state: <a href="#t:voice_state/0">voice_state</a>(),
-  voice_state_since: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>()
-}</pre>
-
-      </div>
-
-<p>A struct representing the state of an agent.</p>
-  </section>
-</section>
 <section class="detail" id="t:chat_state/0">
 
   <div class="detail-header">
@@ -250,11 +222,53 @@ Types
       <h2>Specs</h2>
       <div class="specs">
 
-          <pre>chat_state() :: :idle | :chatting | :wrap | :pause | :pausing | :ending</pre>
+          <pre>chat_state() :: :idle | :chatting | :wrap | :pause | :ending</pre>
 
       </div>
 
 <p>An atom representing the agent's state related to chat operations.</p>
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">t()</h1>
+
+      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>t() :: %AgentHubClient.AgentState{
+  chat_state: <a href="#t:chat_state/0">chat_state</a>(),
+  chat_state_since: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
+  inserted_at: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
+  next_chat_state: <a href="#t:chat_state/0">chat_state</a>(),
+  next_voice_state: <a href="#t:voice_state/0">voice_state</a>(),
+  online_since: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
+  pause_code: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  updated_at: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
+  user_id: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  user_name: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  voice_state: <a href="#t:voice_state/0">voice_state</a>(),
+  voice_state_since: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>()
+}</pre>
+
+      </div>
+
+<p>A struct representing the state of an agent.</p>
   </section>
 </section>
 <section class="detail" id="t:voice_state/0">
@@ -290,7 +304,8 @@ Types
   | :pause
   | :ending
   | :private_callback
-  | :personal_call</pre>
+  | :personal_call
+  | :manual_call</pre>
 
       </div>
 
@@ -379,17 +394,17 @@ Functions
 
   <section class="docstring">
 
-
+<p>The list of attributes. Used when creating Mnesia tables. See <a href="#t:t/0"><code class="inline">t/0</code></a>.</p>
   </section>
 </section>
-<section class="detail" id="record_to_struct/1">
+<section class="detail" id="from_record/1">
 
   <div class="detail-header">
-    <a href="#record_to_struct/1" class="detail-link" title="Link to this function">
+    <a href="#from_record/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">record_to_struct(arg)</h1>
+    <h1 class="signature">from_record(arg1)</h1>
 
       <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
@@ -401,7 +416,43 @@ Functions
 
   <section class="docstring">
 
+      <h2>Specs</h2>
+      <div class="specs">
 
+          <pre>from_record(
+  record ::
+    {:agent_state, user_id :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), user_name :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     online_since :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), voice_state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), voice_state_since :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     next_voice_state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), chat_state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     chat_state_since :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), next_chat_state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     pause_code :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), inserted_at :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), updated_at :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
+) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an AgentState struct from a record.</p>
+  </section>
+</section>
+<section class="detail" id="voice_states/0">
+
+  <div class="detail-header">
+    <a href="#voice_states/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">voice_states()</h1>
+
+      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The list of voice states. Used to expose this enumeration to external modules.</p>
   </section>
 </section>
 

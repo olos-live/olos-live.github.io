@@ -1,6 +1,9 @@
 404.html
 AgentHubClient.AgentState.html
+AgentHubClient.Campaign.html
+AgentHubClient.Mnesia.AgentState.Pause.html
 AgentHubClient.Supervisor.html
+AgentHubClient.Utils.Sequence.html
 AgentHubClient.html
 api-reference.html
 dist/app-f27ff079945e43879c46.js
@@ -9,8 +12,8 @@ dist/html/fonts/icomoon.eot
 dist/html/fonts/icomoon.svg
 dist/html/fonts/icomoon.ttf
 dist/html/fonts/icomoon.woff
-dist/search_items-b8730ad6d2.js
-dist/sidebar_items-16298cadcf.js
+dist/search_items-9749344283.js
+dist/sidebar_items-801a9ad5d7.js
 index.html
 readme.html
 search.html

@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.24.2">
     <meta name="project" content="AgentHub Client v1.0.0-alpha.10">
 
-    <title>AgentHubClient — AgentHub Client v1.0.0-alpha.10</title>
+    <title>AgentHubClient.Campaign — AgentHub Client v1.0.0-alpha.10</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
     <script src="dist/sidebar_items-801a9ad5d7.js"></script>
@@ -80,7 +80,7 @@ AgentHub Client
     <div id="content" class="content-inner">
 
       <h1>
-AgentHubClient <small class="app-vsn">(AgentHub Client v1.0.0-alpha.10)</small>
+AgentHubClient.Campaign <small class="app-vsn">(AgentHub Client v1.0.0-alpha.10)</small>
 
           <a href="http://10.15.5.210/olos-live/agenthub-client" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
@@ -91,9 +91,9 @@ AgentHubClient <small class="app-vsn">(AgentHub Client v1.0.0-alpha.10)</small>
 
 
         <section id="moduledoc">
-<p>This is the main client module. It provides the top-level functions to interact with the AgentHub
-application, like querying the state of agents, fetching list of agents and sending messages to
-an agent.</p>
+<p>Defines the campaign record to be used when dealing with mnesia
+and the campaign struct to be used in all the rest of the
+application.</p>
         </section>
 
 
@@ -106,53 +106,68 @@ an agent.</p>
             Summary
           </h1>
 
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:campaign_status/0">campaign_status()</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>An atom representing the campaign's status.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/0">t()</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A struct representing a campaign.</p></div>
+
+</div>
+
+  </div>
+
   <div class="summary-functions summary">
     <h2>
       <a href="#functions">Functions</a>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#count_agents_in_campaign/1">count_agents_in_campaign(campaign_id)</a>
+    <a href="#attributes/0">attributes()</a>
 
   </div>
-
-    <div class="summary-synopsis"><p>Returns the number of agents of the given campaign grouped by voice state.</p></div>
 
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get_all/0">get_all()</a>
+    <a href="#campaign/1">campaign(args \\ [])</a>
 
   </div>
-
-    <div class="summary-synopsis"><p>Returns a list of all agents that are logged in, no matter the campaign.</p></div>
 
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get_all_in_campaign/1">get_all_in_campaign(campaign_id)</a>
+    <a href="#campaign/2">campaign(record, args)</a>
 
   </div>
-
-    <div class="summary-synopsis"><p>Returns a list of all the agents that are logged in a given campaign.</p></div>
 
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get_by_user_id/1">get_by_user_id(user_id)</a>
+    <a href="#from_map/1">from_map(map)</a>
 
   </div>
-
-    <div class="summary-synopsis"><p>Returns the state of the agent given its user ID.</p></div>
 
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#most_idle_agent_in_campaign/1">most_idle_agent_in_campaign(campaign_id)</a>
+    <a href="#from_record/1">from_record(arg)</a>
 
   </div>
-
-    <div class="summary-synopsis"><p>Returns the agent that is idle for voice for the longest time in a given campaign.</p></div>
 
 </div>
 
@@ -160,6 +175,85 @@ an agent.</p>
 
         </section>
 
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types
+          </h1>
+          <div class="types-list">
+<section class="detail" id="t:campaign_status/0">
+
+  <div class="detail-header">
+    <a href="#t:campaign_status/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">campaign_status()</h1>
+
+      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>campaign_status() :: :started | :stopped | :unknown</pre>
+
+      </div>
+
+<p>An atom representing the campaign's status.</p>
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">t()</h1>
+
+      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>t() :: %AgentHubClient.Campaign{
+  agents: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()],
+  id: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  name: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  started_at: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
+  status: <a href="#t:campaign_status/0">campaign_status</a>(),
+  stopped_at: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
+  updated_at: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>()
+}</pre>
+
+      </div>
+
+<p>A struct representing a campaign.</p>
+  </section>
+</section>
+
+          </div>
+        </section>
 
         <section id="functions" class="details-list">
           <h1 class="section-heading">
@@ -170,14 +264,14 @@ an agent.</p>
 Functions
           </h1>
           <div class="functions-list">
-<section class="detail" id="count_agents_in_campaign/1">
+<section class="detail" id="attributes/0">
 
   <div class="detail-header">
-    <a href="#count_agents_in_campaign/1" class="detail-link" title="Link to this function">
+    <a href="#attributes/0" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">count_agents_in_campaign(campaign_id)</h1>
+    <h1 class="signature">attributes()</h1>
 
       <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
@@ -189,34 +283,19 @@ Functions
 
   <section class="docstring">
 
-      <h2>Specs</h2>
-      <div class="specs">
 
-          <pre>count_agents_in_campaign(campaign_id :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
-  {:ok, %{optional(<a href="AgentHubClient.AgentState.html#t:voice_state/0">AgentHubClient.AgentState.voice_state</a>()) =&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()}}
-  | {:error, reason :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}</pre>
-
-      </div>
-
-<p>Returns the number of agents of the given campaign grouped by voice state.</p><h2 id="count_agents_in_campaign/1-examples" class="section-heading">
-  <a href="#count_agents_in_campaign/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Examples
-</h2>
-<pre><code class="makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">AgentHubClient</span><span class="o">.</span><span class="n">count_agents_in_campaign</span><span class="p" data-group-id="4337795831-1">(</span><span class="s">&quot;campaign1&quot;</span><span class="p" data-group-id="4337795831-1">)</span><span class="w">
-</span><span class="p" data-group-id="4337795831-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4337795831-3">%{</span><span class="ss">idle</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">talking</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="4337795831-3">}</span><span class="p" data-group-id="4337795831-2">}</span><span class="w">
-
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">AgentHubClient</span><span class="o">.</span><span class="n">count_agents_in_campaign</span><span class="p" data-group-id="4337795831-4">(</span><span class="s">&quot;inexistent&quot;</span><span class="p" data-group-id="4337795831-4">)</span><span class="w">
-</span><span class="p" data-group-id="4337795831-5">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="ss">:campaign_not_found</span><span class="p" data-group-id="4337795831-5">}</span></code></pre>
   </section>
 </section>
-<section class="detail" id="get_all/0">
+<section class="detail" id="campaign/1">
+
+    <span id="campaign/0"></span>
 
   <div class="detail-header">
-    <a href="#get_all/0" class="detail-link" title="Link to this function">
+    <a href="#campaign/1" class="detail-link" title="Link to this macro">
       <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
+      <span class="sr-only">Link to this macro</span>
     </a>
-    <h1 class="signature">get_all()</h1>
+    <h1 class="signature">campaign(args \\ [])</h1>
 
       <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
@@ -224,29 +303,23 @@ Functions
      </a>
 
 
+      <span class="note">(macro)</span>
+
   </div>
 
   <section class="docstring">
 
-      <h2>Specs</h2>
-      <div class="specs">
 
-          <pre>get_all() ::
-  {:ok, [<a href="AgentHubClient.AgentState.html#t:t/0">AgentHubClient.AgentState.t</a>()]} | {:error, reason :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}</pre>
-
-      </div>
-
-<p>Returns a list of all agents that are logged in, no matter the campaign.</p>
   </section>
 </section>
-<section class="detail" id="get_all_in_campaign/1">
+<section class="detail" id="campaign/2">
 
   <div class="detail-header">
-    <a href="#get_all_in_campaign/1" class="detail-link" title="Link to this function">
+    <a href="#campaign/2" class="detail-link" title="Link to this macro">
       <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
+      <span class="sr-only">Link to this macro</span>
     </a>
-    <h1 class="signature">get_all_in_campaign(campaign_id)</h1>
+    <h1 class="signature">campaign(record, args)</h1>
 
       <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
@@ -254,29 +327,23 @@ Functions
      </a>
 
 
+      <span class="note">(macro)</span>
+
   </div>
 
   <section class="docstring">
 
-      <h2>Specs</h2>
-      <div class="specs">
 
-          <pre>get_all_in_campaign(campaign_id :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
-  {:ok, [<a href="AgentHubClient.AgentState.html#t:t/0">AgentHubClient.AgentState.t</a>()]} | {:error, reason :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}</pre>
-
-      </div>
-
-<p>Returns a list of all the agents that are logged in a given campaign.</p>
   </section>
 </section>
-<section class="detail" id="get_by_user_id/1">
+<section class="detail" id="from_map/1">
 
   <div class="detail-header">
-    <a href="#get_by_user_id/1" class="detail-link" title="Link to this function">
+    <a href="#from_map/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">get_by_user_id(user_id)</h1>
+    <h1 class="signature">from_map(map)</h1>
 
       <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
@@ -288,25 +355,17 @@ Functions
 
   <section class="docstring">
 
-      <h2>Specs</h2>
-      <div class="specs">
 
-          <pre>get_by_user_id(user_id :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
-  {:ok, <a href="AgentHubClient.AgentState.html#t:t/0">AgentHubClient.AgentState.t</a>()} | {:error, reason :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}</pre>
-
-      </div>
-
-<p>Returns the state of the agent given its user ID.</p>
   </section>
 </section>
-<section class="detail" id="most_idle_agent_in_campaign/1">
+<section class="detail" id="from_record/1">
 
   <div class="detail-header">
-    <a href="#most_idle_agent_in_campaign/1" class="detail-link" title="Link to this function">
+    <a href="#from_record/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">most_idle_agent_in_campaign(campaign_id)</h1>
+    <h1 class="signature">from_record(arg)</h1>
 
       <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
@@ -318,15 +377,7 @@ Functions
 
   <section class="docstring">
 
-      <h2>Specs</h2>
-      <div class="specs">
 
-          <pre>most_idle_agent_in_campaign(campaign_id :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
-  {:ok, <a href="AgentHubClient.AgentState.html#t:t/0">AgentHubClient.AgentState.t</a>()} | {:error, reason :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}</pre>
-
-      </div>
-
-<p>Returns the agent that is idle for voice for the longest time in a given campaign.</p>
   </section>
 </section>
 
