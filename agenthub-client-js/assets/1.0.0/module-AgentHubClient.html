@@ -576,7 +576,7 @@ long polling, authenticating via the given token.</p>
 
     
 
-    <h4 class="name" id="idle"><span class="type-signature"></span>idle<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="idle"><span class="type-signature"></span>idle<span class="signature">(idleRequest)</span><span class="type-signature"></span></h4>
 
     
 
@@ -588,7 +588,7 @@ long polling, authenticating via the given token.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line120">line 120</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line121">line 121</a>
     </li></ul></dd>
     
 
@@ -641,9 +641,58 @@ long polling, authenticating via the given token.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>agenthub.idle()</code></pre>
+    <pre class="prettyprint"><code>agenthub.idle({ userId: "paula" })</code></pre>
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>idleRequest</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-AgentHubClient.html#IdleRequest">module:AgentHubClient#IdleRequest</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The idle request object.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -1099,6 +1148,131 @@ Available events:</p>
 
         
                 
+<h4 class="name" id="IdleRequest">IdleRequest</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line125">line 125</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The id of the user that shall become idle.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description usertext">
+    <p>An idle request.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+                
 <h4 class="name" id="PauseRequest">PauseRequest</h4>
 
 
@@ -1258,7 +1432,7 @@ Available events:</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line124">line 124</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line132">line 132</a>
     </li></ul></dd>
     
 
@@ -1440,7 +1614,7 @@ to a request you have made to the AgentHub server.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line134">line 134</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line142">line 142</a>
     </li></ul></dd>
     
 
@@ -1527,7 +1701,7 @@ to a request you have made to the AgentHub server.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line140">line 140</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line148">line 148</a>
     </li></ul></dd>
     
 
@@ -1614,7 +1788,7 @@ to a request you have made to the AgentHub server.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line154">line 154</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line162">line 162</a>
     </li></ul></dd>
     
 
@@ -1712,7 +1886,7 @@ The payload contains the success or error response.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line146">line 146</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line154">line 154</a>
     </li></ul></dd>
     
 
@@ -1810,7 +1984,7 @@ The payload contains the success or error response.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line162">line 162</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line170">line 170</a>
     </li></ul></dd>
     
 
@@ -1897,7 +2071,7 @@ The payload contains the success or error response.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line168">line 168</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line176">line 176</a>
     </li></ul></dd>
     
 
@@ -1983,7 +2157,7 @@ The payload contains the success or error response.</p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Thu Dec 09 2021 11:07:23 GMT-0300 (Brasilia Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Thu Dec 09 2021 11:12:04 GMT-0300 (Brasilia Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
