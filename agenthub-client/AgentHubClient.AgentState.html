@@ -5,12 +5,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.24.2">
-    <meta name="project" content="AgentHub Client v1.0.0-alpha.11">
+    <meta name="project" content="AgentHub Client v1.0.0-alpha.12">
 
-    <title>AgentHubClient.AgentState — AgentHub Client v1.0.0-alpha.11</title>
+    <title>AgentHubClient.AgentState — AgentHub Client v1.0.0-alpha.12</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-984e87c1a0.js"></script>
+    <script src="dist/sidebar_items-8e1ccd2f53.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -58,7 +58,7 @@
 AgentHub Client
       </a>
       <strong class="sidebar-projectVersion">
-        v1.0.0-alpha.11
+        v1.0.0-alpha.12
       </strong>
     </div>
 
@@ -80,7 +80,7 @@ AgentHub Client
     <div id="content" class="content-inner">
 
       <h1>
-AgentHubClient.AgentState <small class="app-vsn">(AgentHub Client v1.0.0-alpha.11)</small>
+AgentHubClient.AgentState <small class="app-vsn">(AgentHub Client v1.0.0-alpha.12)</small>
 
           <a href="http://10.15.5.210/olos-live/agenthub-client" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
@@ -178,6 +178,33 @@ application.</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#from_records/1">from_records(records)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Returns a list of AgentState structs from a list of records.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mnesia_match_all/0">mnesia_match_all()</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>The tuple for matching all agents in Mnesia</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mnesia_match_offline/0">mnesia_match_offline()</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>The tuple for matching offline agents in Mnesia</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#voice_states/0">voice_states()</a>
 
   </div>
@@ -257,6 +284,7 @@ Types
   inserted_at: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
   next_chat_state: <a href="#t:chat_state/0">chat_state</a>(),
   next_voice_state: <a href="#t:voice_state/0">voice_state</a>(),
+  offline_since: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
   online_since: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
   pause_code: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
   updated_at: <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(),
@@ -422,15 +450,82 @@ Functions
           <pre>from_record(
   record ::
     {:agent_state, user_id :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), user_name :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     online_since :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), voice_state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), voice_state_since :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     next_voice_state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), chat_state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     chat_state_since :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), next_chat_state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     pause_code :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), inserted_at :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), updated_at :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
+     online_since :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), offline_since :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), voice_state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     voice_state_since :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), next_voice_state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     chat_state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), chat_state_since :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     next_chat_state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), pause_code :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), inserted_at :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     updated_at :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
 ) :: <a href="#t:t/0">t</a>()</pre>
 
       </div>
 
 <p>Creates an AgentState struct from a record.</p>
+  </section>
+</section>
+<section class="detail" id="from_records/1">
+
+  <div class="detail-header">
+    <a href="#from_records/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">from_records(records)</h1>
+
+      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns a list of AgentState structs from a list of records.</p>
+  </section>
+</section>
+<section class="detail" id="mnesia_match_all/0">
+
+  <div class="detail-header">
+    <a href="#mnesia_match_all/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mnesia_match_all()</h1>
+
+      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The tuple for matching all agents in Mnesia</p>
+  </section>
+</section>
+<section class="detail" id="mnesia_match_offline/0">
+
+  <div class="detail-header">
+    <a href="#mnesia_match_offline/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mnesia_match_offline()</h1>
+
+      <a href="http://10.15.5.210/olos-live/agenthub-client" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The tuple for matching offline agents in Mnesia</p>
   </section>
 </section>
 <section class="detail" id="voice_states/0">

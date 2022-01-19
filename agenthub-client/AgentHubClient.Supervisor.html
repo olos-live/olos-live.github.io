@@ -5,12 +5,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.24.2">
-    <meta name="project" content="AgentHub Client v1.0.0-alpha.11">
+    <meta name="project" content="AgentHub Client v1.0.0-alpha.12">
 
-    <title>AgentHubClient.Supervisor — AgentHub Client v1.0.0-alpha.11</title>
+    <title>AgentHubClient.Supervisor — AgentHub Client v1.0.0-alpha.12</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-984e87c1a0.js"></script>
+    <script src="dist/sidebar_items-8e1ccd2f53.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -58,7 +58,7 @@
 AgentHub Client
       </a>
       <strong class="sidebar-projectVersion">
-        v1.0.0-alpha.11
+        v1.0.0-alpha.12
       </strong>
     </div>
 
@@ -80,7 +80,7 @@ AgentHub Client
     <div id="content" class="content-inner">
 
       <h1>
-AgentHubClient.Supervisor <small class="app-vsn">(AgentHub Client v1.0.0-alpha.11)</small>
+AgentHubClient.Supervisor <small class="app-vsn">(AgentHub Client v1.0.0-alpha.12)</small>
 
           <a href="http://10.15.5.210/olos-live/agenthub-client" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
@@ -91,17 +91,30 @@ AgentHubClient.Supervisor <small class="app-vsn">(AgentHub Client v1.0.0-alpha.1
 
 
         <section id="moduledoc">
-<p>Supervises the internal processes used by the client itself.</p><p>Add it to your supervision tree (usually in <code class="inline">application.ex</code>). Example:</p><pre><code class="makeup elixir"><span class="w">  </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4332329441-1">[</span><span class="w">
-    </span><span class="p" data-group-id="4332329441-2">{</span><span class="nc">AgentHubClient.Supervisor</span><span class="p">,</span><span class="w"> </span><span class="ss">replication</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="4332329441-2">}</span><span class="w">
-  </span><span class="p" data-group-id="4332329441-1">]</span><span class="w">
-  </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="4332329441-3">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="4332329441-3">)</span></code></pre><p>The only available option is <code class="inline">replication</code>. When enabled, a copy
-of the mnesia table that holds agents state is kept locally in
-this node, so reading data is a local operation. If disabled,
-all access to the data is remote as the data is in the AgentHub
-node.</p><p>Currently the internal processes that are supervised are mnesia
-and libcluster, where the libcluster process is only started if
-the node is started with a name, i.e, if it is started expecting
-it to be in a cluster and not standalone.</p>
+<p>Supervises the internal processes used by the client itself
+(mnesia and libcluster).</p><p>Add it to your supervision tree (usually in <code class="inline">application.ex</code>). Example:</p><pre><code class="makeup elixir"><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="8610000643-1">[</span><span class="w">
+  </span><span class="p" data-group-id="8610000643-2">{</span><span class="nc">AgentHubClient.Supervisor</span><span class="p">,</span><span class="w">
+   </span><span class="ss">standalone</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w">
+   </span><span class="ss">k8s_services</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8610000643-3">[</span><span class="s">&quot;agenthub&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;dialer&quot;</span><span class="p" data-group-id="8610000643-3">]</span><span class="p">,</span><span class="w">
+   </span><span class="ss">replication</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="8610000643-2">}</span><span class="w">
+</span><span class="p" data-group-id="8610000643-1">]</span><span class="w">
+</span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="8610000643-4">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="8610000643-4">)</span></code></pre><p>All parameters are optional:</p><ul><li><p><code class="inline">standalone</code>: defaults to <code class="inline">false</code>, which means it will try to connect to
+remote nodes to form a cluster. Set it to <code class="inline">true</code> for running it in
+standalone mode, i.e., without connecting to any other node.</p></li><li><p><code class="inline">k8s_services</code>: list of kubernetes services that are part of the cluster.
+It defaults to <code class="inline">[&quot;agenthub&quot;]</code>, but it is ignored if running in standalone
+mode. Leave it blank if running multiple instances in a single node without
+kubernetes. In that case, different instances in the same host will see each
+other automatically. For production, add all the services that shall share
+data. Imagine we add only <code class="inline">agenthub</code> to this list and we have all the
+applications up and running. Then we restart the AgentHub. When it starts, it
+won't try to connect to the other applications, so it will start with a new
+empty table, while the dialer for instance might have a copy of the original
+table with data in it that we could use. If we add the dialer (and the other
+applications) here, then when the AgentHub starts, it will start connected to
+the dialer for instance and will join the cluster, copying the tables instead
+of creating new ones.</p></li><li><p><code class="inline">replication</code>: set it to <code class="inline">true</code> to have a copy of the mnesia tables locally in
+ this node, so reading data will be a local operation. If set to <code class="inline">false</code>, all
+ access to the data will be remote as the data will be in the remote nodes only.</p></li></ul>
         </section>
 
 
