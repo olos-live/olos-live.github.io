@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>index.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AgentHubClient.html">AgentHubClient</a><ul class='methods'><li data-type='method'><a href="module-AgentHubClient.html#.AgentHubClient">AgentHubClient</a></li><li data-type='method'><a href="module-AgentHubClient.html#connect">connect</a></li><li data-type='method'><a href="module-AgentHubClient.html#disconnect">disconnect</a></li><li data-type='method'><a href="module-AgentHubClient.html#isConnected">isConnected</a></li><li data-type='method'><a href="module-AgentHubClient.html#on">on</a></li></ul></li></ul><h3>Events</h3><ul><li><a href="module-AgentHubClient.html#event:connected">connected</a></li><li><a href="module-AgentHubClient.html#event:disconnected">disconnected</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">index.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * This is the online documentation of the JavaScript library that a frontend application
+ * can use to interact with the AgentHub service. The AgentHub service is part of
+ * the Olos Communicator solution and is responsible for emitting events coming from
+ * the Olos platform. 
+ * 
+ * @module AgentHubClient
+ */
+
+import * as Connection from "./connection"
+import * as Events from "./events"
+
+/**
+ * Returns an AgentHub Client object that you can use to interact with the
+ * AgentHub service running in the given URL. The returned object exposes
+ * all the functions you see listed below in this documentation page. 
+ * 
+ * @param {string} wsURL - The websocket URL where the AgentHub service is listening.
+ * 
+ * @returns An object with all the functions listed below in this documentation page,
+ * like connect, disconnect, on, etc...
+ * 
+ * @throws An error if the URL is not informed.
+ * 
+ * @example
+ * const agenthub = AgentHubClient("ws://localhost:4000/socket")
+ */
+export function AgentHubClient(wsURL) {
+
+  if (wsURL == undefined || wsURL == null || wsURL == "") {
+    throw new Error(`Invalid wsURL: ${wsURL}`)
+  }
+
+  /**
+   * Registers a callback function for the given event name.
+   * @memberof module:AgentHubClient#
+   * @param {string} eventName - The name of the event you want to subscribe. 
+   * Available events: 
+   * - {@link module:AgentHubClient#event:connected|connected}
+   * - {@link module:AgentHubClient#event:disconnected|disconnected}
+   * - {@link module:AgentHubClient#event:voiceEvent|voiceEvent}
+   * - {@link module:AgentHubClient#event:textEvent|textEvent}
+   * 
+   * @param {function} func - The function that will be called when the event is fired.
+   * @example
+   * agenthub.on("connected", () => console.log("Connected to AgentHub"))
+   */
+  function on(eventName, func) {
+    Events.on(eventName, func)
+  }
+
+  /**
+   * Connects to the AgentHub server via websockets or http 
+   * long polling, authenticating via the given token.
+   * @memberof module:AgentHubClient#
+   * @param {string} token - The string representation of the user's access token (JWT)
+   * @fires module:AgentHubClient#connected
+   * @example
+   * agenthub.connect(getToken())
+   */
+  function connect(token) {
+    Connection.connect(wsURL, token)
+  }
+
+  /**
+   * Disconnects from the AgentHub server.
+   * @memberof module:AgentHubClient#
+   * @fires module:AgentHubClient#disconnected
+   * @example
+   * agenthub.disconnect()
+   */
+  function disconnect() {
+    Connection.disconnect()
+  }
+
+  /**
+   * Returns whether you re connected or not.
+   * @memberof module:AgentHubClient#
+   * @returns true or false boolean value indicating whether you are connected or not.
+   * @example
+   * if (agenthub.isConnected()) {
+   *   // render a green light
+   * }
+   */
+  function isConnected() {
+    return Connection.isConnected()
+  }
+
+  
+  /**
+   * Fired when you get connected to the AgentHub server. There is no payload.
+   * @event connected
+   * @memberof module:AgentHubClient#
+   */
+
+  /**
+   * Fired when you get disconnected from the AgentHub server. There is no payload.
+   * @event disconnected
+   * @memberof module:AgentHubClient#
+   */
+
+  return {
+    connect,
+    disconnect,
+    isConnected,
+    on,
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Wed Jul 06 2022 14:21:34 GMT-0300 (Brasilia Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
