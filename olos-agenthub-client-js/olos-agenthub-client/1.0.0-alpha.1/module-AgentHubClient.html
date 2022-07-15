@@ -64,44 +64,36 @@ the Olos platform, that might be on-premises or in the cloud.</p>
 
  const agenthub = AgentHubClient(&quot;ws://csu.oloslive.com/socket&quot;)
 
- agenthub.on(&quot;connected&quot;, handleConnection)
- agenthub.on(&quot;disconnected&quot;, handleDisconnection)
+ agenthub.on(&quot;connected&quot;, (agentInfo) => {
+   console.log(&quot;Agent connected&quot;, agentInfo)
+ })
+
+ agenthub.on(&quot;disconnected&quot;, () => {
+   console.log(&quot;Agent disconnected&quot;)
+ })
 
  agenthub.on(&quot;screenPop&quot;, (event) => {
    console.log(&quot;Displaying a screen pop:&quot;, event)
- })
-
- agenthub.on(&quot;agentLogin&quot;, (event) => {
-   console.log(&quot;Agent has logged in:&quot;, event)
  })
 
  agenthub.on(&quot;thirdParty&quot;, (event) => {
    console.log(&quot;Handling a 3rd party event:&quot;, event)
  })
 
- agenthub.on(&quot;any&quot;, (event) => {
-   const { eventType } = event
-   console.log(`Received a ${eventType}:`, event)
- })
-
  agenthub.connect(&quot;LdmTsQsGcJFHREsef3dffsw.HFURUDDDD.sforhJJG&quot;)
-
- function handleConnection(agentInfo) {
-   console.log(agentInfo)
-   renderOnline(agentInfo)
- }
-
- function handleDisconnection() {
-   console.log(&quot;Agent disconnected&quot;)
- }
-
- function handleVoiceEvent(event) {
-   console.log(&quot;Received voice event&quot;, event)
- }
-
- function handleTextEvent(event) {
-   console.log(&quot;Received text event&quot;, event)
- }
+</code></pre>
+<p>Instead of subscribing to individual events, you can subscribe to all
+of them using the <code>any</code> wildcard:</p>
+<pre class="prettyprint source"><code>  agenthub.on(&quot;any&quot;, (event) => {
+    switch (event.eventType) {
+      case &quot;screenPop&quot;:
+        // do something with the screenPop event
+      case &quot;thirdParty&quot;:
+        // do something with the 3rd party event
+      default:
+        // log something like &quot;unsupported event type: ${eventType}&quot;
+    }
+  })
 </code></pre>
 <p>Example of an event from Olos:</p>
 <pre class="prettyprint source"><code>{
@@ -115,7 +107,7 @@ the Olos platform, that might be on-premises or in the cloud.</p>
             &quot;anotherField&quot;: 1
         }
     }
- }</code></pre></div>
+}</code></pre></div>
             
 
             
@@ -234,7 +226,7 @@ the Olos platform, that might be on-premises or in the cloud.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line92">line 92</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line89">line 89</a>
     </li></ul></dd>
     
 
@@ -400,7 +392,7 @@ like connect, disconnect, on, etc...</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line130">line 130</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line129">line 129</a>
     </li></ul></dd>
     
 
@@ -547,7 +539,7 @@ long polling, authenticating via the given token.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line141">line 141</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line140">line 140</a>
     </li></ul></dd>
     
 
@@ -644,7 +636,7 @@ long polling, authenticating via the given token.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line154">line 154</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line153">line 153</a>
     </li></ul></dd>
     
 
@@ -748,7 +740,7 @@ long polling, authenticating via the given token.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line117">line 117</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line116">line 116</a>
     </li></ul></dd>
     
 
@@ -933,7 +925,7 @@ long polling, authenticating via the given token.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line159">line 159</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line158">line 158</a>
     </li></ul></dd>
     
 
@@ -1020,7 +1012,7 @@ long polling, authenticating via the given token.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line165">line 165</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line164">line 164</a>
     </li></ul></dd>
     
 
@@ -1106,7 +1098,7 @@ long polling, authenticating via the given token.</p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Wed Jul 06 2022 18:29:12 GMT-0300 (Brasilia Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Fri Jul 15 2022 09:46:48 GMT-0300 (Brasilia Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
